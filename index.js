@@ -10,6 +10,9 @@ var express = require('express');/*Import the express module*/
 var app = express();/*Instantiate express module*/
 var ejs = require('ejs');/*Import Embedded JavaScript Templating*/
 
+app.use(express.static("public"));
+app.use(express.static("assets"));
+
 /*Routing*/
 app.get('/', function (req, res) {
   res.send('Hello World!');
