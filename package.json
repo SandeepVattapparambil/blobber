@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.5",
-    "jade": "^1.11.0",
     "materialize-css": "^0.97.8",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pug": "^2.0.0-beta6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
