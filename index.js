@@ -10,10 +10,10 @@
 var express = require('express');
 /*Instantiate express module*/
 var app = express();
-/*Import Embedded JavaScript Templating*/
-var ejs = require('ejs');
+/*Import Jade Templating*/
 
-/*Set HTML Views folder*/
+app.use()
+/*Set public HTML folder*/
 app.use(express.static("public"));
 /*Set Static assets folder containing *.css and *.js files*/
 app.use(express.static("assets"));
