@@ -15,12 +15,8 @@ app.set('port', process.env.PORT || 3000);
 /*Set Static assets folder containing *.css and *.js files*/
 app.use(express.static("assets"));
 
-/*Routing*/
-app.get('/', function (req, res) {
-  res.send("hello");
-})
-
+app.use(require('./routes/login'));
 /*express server*/
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port'));
-})
+});
