@@ -5,11 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "browser-sync": "^2.18.5",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "materialize-css": "^0.97.8"
   },
   "devDependencies": {
     "browser-sync": "^2.18.5",
+    "ejs": "^2.5.5",
     "materialize-css": "^0.97.8"
   },
   "scripts": {
