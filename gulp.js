@@ -13,7 +13,8 @@ gulp.task('browser-sync', function() {
         }
     });
 });
-
+// Default task
+gulp.task('default', ['watch', 'browser-sync']);
 // Watch files for changes
 gulp.task('watch', ['browser-sync'], function() {
     // Watch HTML files
@@ -25,5 +26,3 @@ gulp.task('watch', ['browser-sync'], function() {
     // Watch image files
     gulp.watch('assets/images/*', reload);
 });
-// Default task
-gulp.task('default', ['watch', 'browser-sync']);
