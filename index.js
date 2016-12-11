@@ -11,17 +11,12 @@ var express = require('express');
 /*Instantiate express module*/
 var app = express();
 
-app.set('view engine', 'pug');
-
-app.use("views", "/views");
-/*Set public HTML folder*/
-app.use(express.static("public"));
 /*Set Static assets folder containing *.css and *.js files*/
 app.use(express.static("assets"));
 
 /*Routing*/
 app.get('/', function (req, res) {
-  res.render("login.jade");
+  res.render("hello");
 })
 
 /*express server*/
