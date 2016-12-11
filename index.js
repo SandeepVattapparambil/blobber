@@ -6,11 +6,16 @@
 **
 */
 'use strict'
-var express = require('express');/*Import the express module*/
-var app = express();/*Instantiate express module*/
-var ejs = require('ejs');/*Import Embedded JavaScript Templating*/
+/*Import the express module*/
+var express = require('express');
+/*Instantiate express module*/
+var app = express();
+/*Import Embedded JavaScript Templating*/
+var ejs = require('ejs');
 
+/*Set HTML Views folder*/
 app.use(express.static("public"));
+/*Set Static assets folder containing *.css and *.js files*/
 app.use(express.static("assets"));
 
 /*Routing*/
