@@ -12,7 +12,7 @@ var express = require('express');
 var app = express();
 /*Import Jade Templating*/
 
-app.use()
+app.use("views", "./views");
 /*Set public HTML folder*/
 app.use(express.static("public"));
 /*Set Static assets folder containing *.css and *.js files*/
@@ -20,7 +20,7 @@ app.use(express.static("assets"));
 
 /*Routing*/
 app.get('/', function (req, res) {
-  res.send('login.jade');
+  res.render('login.jade');
 })
 
 /*express server*/
