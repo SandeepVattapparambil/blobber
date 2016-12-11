@@ -11,15 +11,16 @@ var express = require('express');
 /*Instantiate express module*/
 var app = express();
 
+app.set('port', process.env.PORT || 3000);
 /*Set Static assets folder containing *.css and *.js files*/
 app.use(express.static("assets"));
 
 /*Routing*/
 app.get('/', function (req, res) {
-  res.render("hello");
+  res.send("hello");
 })
 
 /*express server*/
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(app.get('port'), function () {
+  console.log('Example app listening on port ' + app.get('port'));
 })
