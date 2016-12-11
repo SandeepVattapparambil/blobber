@@ -20,7 +20,7 @@ app.use(express.static("assets"));
 
 /*Routing*/
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.send('login.jade');
 })
 
 /*express server*/
