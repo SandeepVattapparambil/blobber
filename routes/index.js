@@ -57,17 +57,27 @@ router.post('/login', function(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.render('index',{
-              title:'Login',
-              message:"😯 No user found!"
+            return res.render('index', {
+                title: 'Login',
+                message: "😯 No user found!"
             });
         }
-        return res.render('home',{
+        /*return res.render('home',{
           user:username,
           message:'Welcome'
-        });
+        });*/
+        var string = encodeURIComponent('Welcome' + username);
+        res.redirect('/home?query=' + string);
     });
 });
-
+/* Get Home */
+router.get('/home', function(req, res, next) {
+    if (req.query.query) {
+        var message = req.params.query;
+    }
+    res.render('home', {
+      message: message
+    });
+});
 
 module.exports = router;
