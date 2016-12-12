@@ -19,12 +19,11 @@ gulp.task('watch', ['browser-sync'], function() {
     // Watch HTML files
     gulp.watch('*.html', reload);
     // Watch css files
-    gulp.watch('assets/css/*', reload);
+    gulp.watch('public/stylesheets/*', reload);
     // Watch JS files
-    gulp.watch('assets/js/*', reload);
-    gulp.watch('assets/js/pages/*', reload);
+    gulp.watch('public/javascripts/*', reload);
     // Watch image files
-    gulp.watch('assets/images/*', reload);
+    gulp.watch('public/images/*', reload);
 });
 // Default task
 gulp.task('default', ['watch', 'browser-sync']);

@@ -1,0 +1,75 @@
+/*
+**
+**Custom Style Sheet for Blobber
+**Sandeep Vattapparambil
+**
+**
+*/
+
+
+/**********Custom Color********************************************************/
+
+
+/* Alpha Color */
+
+.alpha-black {
+    color: rgba(160, 160, 160, 0.2);
+}
+
+
+/***************Rule***********************************************************/
+
+.rule {
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+}
+
+
+/*****Login Form Style*********************************************************/
+
+
+/* label color */
+
+.input-field label {
+    color: white;
+}
+
+
+/* label focus color */
+
+.input-field input[type=text]:focus+label {
+    color: #cddc39;
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #cddc39;
+    box-shadow: 0 1px 0 0 #cddc39;
+}
+
+
+/* valid color */
+
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #cddc39;
+    box-shadow: 0 1px 0 0 #cddc39;
+}
+
+
+/* invalid color */
+
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+
+
+/* top margin for login form*/
+
+.top-margin {
+    margin-top: 10%;
+}
+
+
+/******************************************************************************/
