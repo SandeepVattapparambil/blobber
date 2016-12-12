@@ -66,14 +66,14 @@ router.post('/login', function(req, res, next) {
           user:username,
           message:'Welcome'
         });*/
-        var string = encodeURIComponent('Welcome' + username);
+        var string = encodeURIComponent('Welcome ' + username);
         res.redirect('/home?query=' + string);
     });
 });
 /* Get Home */
 router.get('/home', function(req, res, next) {
     if (req.query.query) {
-        var message = req.params.query;
+        var message = req.query.query;
     }
     res.render('home', {
       message: message
