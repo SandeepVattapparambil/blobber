@@ -53,10 +53,13 @@ router.post('/login', function(req, res, next) {
         password: password
     }, function(err, user) {
         if (err) {
+            console.log(err);
             return next(err);
         }
         if (!user) {
-            return res.send('No user found!');
+            return res.render('index',{
+              message:"No User Found"
+            });
         }
         return res.send('Welcome!');
     });
