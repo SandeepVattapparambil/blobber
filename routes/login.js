@@ -12,9 +12,7 @@ if (connect_db) {
 
 /* Login page. */
 router.post('/login', function(req, res, next) {
-    if (req.body.username && req.body.password) {
-
-    }
+    console.log(req.body.username);
 });
 
 module.exports = router;
