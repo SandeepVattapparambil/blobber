@@ -14,6 +14,7 @@ else if(error){
 var Schema = mongoose.Schema;
 var UserSchema = new Schema({
     first_name: String,
+    lastname: String,
     user_name: String,
     password: String
 });
@@ -28,7 +29,6 @@ router.post('/login', function(req, res, next) {
           message: 'User Not Found'
       });
     });
-    res.send("Logged In");
   }
 });
 
