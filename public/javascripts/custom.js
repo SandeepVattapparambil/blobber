@@ -1,6 +1,9 @@
 /*
-**
-**Custom Javascript and jQuery
-**
-**
-*/
+ **
+ **Custom Javascript and jQuery
+ **
+ **
+ */
+$(document).ready(function() {
+    
+});

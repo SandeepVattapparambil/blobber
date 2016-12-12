@@ -58,7 +58,8 @@ router.post('/login', function(req, res, next) {
         }
         if (!user) {
             return res.render('index',{
-              message:"No User Found"
+              title:'Login',
+              message:"😯 No user found!"
             });
         }
         return res.send('Welcome!');
