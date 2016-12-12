@@ -7,18 +7,29 @@ var connect_db = mongoose.connect('mongodb://localhost/blobber');
 if (connect_db) {
     console.log("\nDatabase connection available!");
 }
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'Login'
-    });
+else if(error){
+  console.log(error);
+}
+// Mongoose Schema definition
+var Schema = mongoose.Schema;
+var UserSchema = new Schema({
+    first_name: String,
+    user_name: String,
+    password: String
 });
+// Mongoose Model definition
+var User = mongoose.model('users', UserSchema);
 
+/* Login page. */
 router.post('/login', function(req, res, next) {
-  var username = req.body.username;
-  var password = req.body.password;
-  connect_db.blobber_user.find({username:"" +username, password:"" +passwrod});
+  if(req.body.username && req.body.password){
+    User.find({username:req.body.username, password:req.body.password}, function(err){
+      res.render('index', {
+          message: 'User Not Found'
+      });
+    });
+    res.send("Logged In");
+  }
 });
 
 module.exports = router;
