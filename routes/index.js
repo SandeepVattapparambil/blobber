@@ -29,10 +29,11 @@ var db = mongoose.connect('mongodb://localhost/blobber', function(err, db) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: 'Login'
+        title: 'Login',
+        message: ''
     });
 });
-
+/* Get all data from selected collection */
 router.get('/get-data', function(req, res, next) {
     User.find()
         .then(function(doc) {
