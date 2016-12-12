@@ -62,7 +62,10 @@ router.post('/login', function(req, res, next) {
               message:"😯 No user found!"
             });
         }
-        return res.send('Welcome!');
+        return res.render('home',{
+          user:username,
+          message:'Welcome'
+        });
     });
 });
 
