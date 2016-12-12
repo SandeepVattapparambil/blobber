@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
 router.get('/get-data', function(req, res, next) {
     User.find()
         .then(function(doc) {
-            res.render('index', {
+            res.render('test', {
                 title: doc
             });
         });
