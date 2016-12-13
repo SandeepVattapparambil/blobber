@@ -2,7 +2,9 @@
 <html>
 
 <head>
-  <title>Blobber • <%=title%></title>
+    <title>Blobber •
+        <%=title%>
+    </title>
     <!--Import Google Icon Font-->
     <link href="stylesheets/icon.css" rel="stylesheet">
     <!--Import materialize.css-->
@@ -67,12 +69,10 @@
         var message = "<%=message%>";
         if (message) {
             Materialize.toast(message, 4000);
-        }
-        
-        else{
-          Materialize.toast("😃	Welcome..", 4000,'', function(){
-            Materialize.toast("😃	Please Login!", 4000);
-          });
+        } else {
+            Materialize.toast("😃	Welcome..", 4000, '', function() {
+                Materialize.toast("😃	Please Login!", 4000);
+            });
         }
     </script>
 </body>
