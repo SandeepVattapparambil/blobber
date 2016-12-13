@@ -4,8 +4,14 @@
  **
  **
  */
+//NProgress Start
+NProgress.start();
 $(document).ready(function() {
+    //NProgress done
+    NProgress.done();
+    //SideNav init
     $(".button-collapse").sideNav();
+    //Dropdown init
     $('.dropdown-button').dropdown({
         inDuration: 300,
         outDuration: 225,
@@ -15,4 +21,5 @@ $(document).ready(function() {
         belowOrigin: true, // Displays dropdown below the button
         alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
+
 });
