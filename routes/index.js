@@ -17,8 +17,8 @@ var userSchema = new Schema({
 var User = mongoose.model('User', userSchema);
 
 //Check MongoDB service is running or not
-var db = mongoose.connect('mongodb://localhost/blobber', function(err, db) {
-    if (db) {
+var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connect) {
+    if (db_connect) {
         console.log('Database Service is running and accesible!');
     }
     else if (err) {
