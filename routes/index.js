@@ -91,4 +91,5 @@ router.get('/logout', function(req, res, next) {
     logout_session.message = 'You have logged out !'
     res.redirect('/');
 });
+
 module.exports = router;
