@@ -67,7 +67,7 @@ router.post('/login', function(req, res, next) {
           message:'Welcome'
         });*/
         var string = encodeURIComponent('Welcome ' + username);
-        res.redirect('/home?query=' + string);
+        res.redirect('/home/:query=' + string);
     });
 });
 /* Get Home */
