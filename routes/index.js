@@ -27,12 +27,11 @@ var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connec
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.session){
-    var message_string = req.session.sess_message;
-  }
-  else{
-    var message_string = '';
-  }
+    if (req.session) {
+        var message_string = req.session.message;
+    } else {
+        var message_string = '';
+    }
     res.render('index', {
         title: 'Login',
         message: message_string
@@ -86,10 +85,10 @@ router.get('/home', function(req, res, next) {
 /* Logout */
 router.get('/logout', function(req, res, next) {
     if (req.session) {
-        req.session.destroy();
+        req.session.user_name = '';
     }
-    var session = req.session;
-    session.sess_message = 'You have logged out!';
+    var logout_session = req.session;
+    logout_session.message = 'You have logged out !'
     res.redirect('/');
 });
 module.exports = router;
