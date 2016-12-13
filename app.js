@@ -11,6 +11,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 /*Morgan Logger Module*/
 var logger = require('morgan');
+/*Eexpress-Session Module*/
+var expressSession = require('express-session');
 /*Cookie-Parser Module*/
 var cookieParser = require('cookie-parser');
 /*URL Parameter parsing Module*/
@@ -37,6 +39,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+app.use(expressSession({
+    secret: 'blobber_secret_key',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

@@ -20,8 +20,7 @@ var User = mongoose.model('User', userSchema);
 var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connect) {
     if (db_connect) {
         console.log('Database Service is running and accesible!');
-    }
-    else if (err) {
+    } else if (err) {
         console.log('⚠️ Database Service is not running!');
     }
 });
@@ -62,21 +61,19 @@ router.post('/login', function(req, res, next) {
                 message: "😯 No user found!"
             });
         }
-        /*return res.render('home',{
-          user:username,
-          message:'Welcome'
-        });*/
-        var string = encodeURIComponent(username);
-        res.redirect('/home?query='+string);
+        var session = req.session;
+        session.user_name = encodeURIComponent(username);
+        res.redirect('/home');
     });
 });
 /* Get Home */
 router.get('/home', function(req, res, next) {
-    if (req.query.query) {
-        var message = req.query.query;
+    if (req.session) {
+        var user = req.session.user_name;
     }
     res.render('home', {
-      message: "Welcome "+message
+        message: "Welcome " + user,
+        user: user
     });
 });
 
