@@ -18,9 +18,9 @@ var cookieParser = require('cookie-parser');
 /*URL Parameter parsing Module*/
 var bodyParser = require('body-parser');
 
-/*index routes*/
+/*App routes*/
 var index = require('./routes/index');
-/*user routes*/
+/*API routes*/
 var api = require('./routes/api');
 
 /*Instantiate Express Module*/
