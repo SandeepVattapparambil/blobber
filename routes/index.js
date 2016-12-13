@@ -21,7 +21,7 @@ var db = mongoose.connect('mongodb://localhost/blobber', function(err, db) {
     if (db) {
         console.log('Database Service is running and accesible!');
     }
-    if (err) {
+    else if (err) {
         console.log('⚠️ Database Service is not running!');
     }
 });
