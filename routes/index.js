@@ -67,16 +67,16 @@ router.post('/login', function(req, res, next) {
           message:'Welcome'
         });*/
         var string = encodeURIComponent(username);
-        res.redirect('/home');
+        res.redirect('/home?query='+string);
     });
 });
 /* Get Home */
 router.get('/home', function(req, res, next) {
-    if (req.params.id) {
-        var message = req.params.id;
+    if (req.query.query) {
+        var message = req.query.query;
     }
     res.render('home', {
-      message: message
+      message: "Welcome "+message
     });
 });
 
