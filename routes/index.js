@@ -84,9 +84,9 @@ router.get('/home', function(req, res, next) {
 
 /* Get Profile */
 router.get('/home/:user', function(req, res, next) {
-  if(req.session){
-    var user = req.session.user_name;
-  }
+    if (req.session) {
+        var user = req.session.user_name;
+    }
     res.render('profile', {
         user: user,
     });
