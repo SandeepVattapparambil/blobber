@@ -35,6 +35,7 @@ $(document).ready(function() {
     });
     //Add new user
     $('#add_new_user').click(function(){
-
+      $(this).addClass('disabled');
+      $('#add_user_form').slideDown();
     });
 });
