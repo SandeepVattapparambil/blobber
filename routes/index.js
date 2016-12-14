@@ -107,6 +107,13 @@ router.get('/home/:user', function(req, res, next) {
     });
 });
 
+/* Update profile form */
+router.get('/update_profile', function(req, res, next) {
+    if (req.session) {
+      var logged = true;
+    }
+});
+
 /* Logout */
 router.get('/logout', function(req, res, next) {
     if (req.session) {
