@@ -117,17 +117,27 @@ router.post('/update_profile', function(req, res, next) {
         var last_name = req.body.last_name;
         var user_name = req.body.user_name;
         var password = req.body.password;
-        //console.log(first_name);
-        User.findOne({user_name: identifier}, function(err, user){
-          if(err){
-            var message = 'Cannot find user!';
-          }
-          user.first_name = req.body.first_name;
-          user.last_name = req.body.last_name;
-          user.user_name = req.body.user_name;
-          user.password = req.body.password;
-          user.save();
-          res.render('profile', {message:"Successfully updated "+identifier});
+        console.log("" + first_name + " " + last_name + " " + user_name + " " + password + "");
+        User.findOne({
+            user_name: identifier
+        }, function(err, user) {
+            if (err) {
+                var message = 'Cannot find user!';
+            }
+            User.update({
+                first_name: first_name,
+                last_name: last_name,
+                user_name: user_name,
+                password: password
+            }, function(err, user){
+              if(err){
+                var message = 'Cannot update user!';
+              }
+              res.render('profile', {
+                  message: "Successfully updated " + identifier
+              });
+            });
+
         });
     }
 });
