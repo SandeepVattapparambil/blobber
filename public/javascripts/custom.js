@@ -33,9 +33,10 @@ $(document).ready(function() {
         $('#profile_cancel').toggleClass('disabled');
         $('#profile_update').toggleClass('disabled');
     });
-    //Add new user
+    //Add new user slide down
     $('#add_new_user').click(function(){
       $(this).addClass('disabled');
       $('#add_user_form').slideDown();
     });
+    //close new user slide down
 });
