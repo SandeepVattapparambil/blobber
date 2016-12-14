@@ -98,10 +98,12 @@ router.get('/home/:user', function(req, res, next) {
         var last_name = user.last_name;
         var user_name = user.user_name;
         var password = user.password;
-    });
-    res.render('profile', {
-        user: user,
-        first_name: firstName
+        res.render('profile', {
+            first_name: first_name,
+            last_name: last_name,
+            user_name: user_name,
+            password: password
+        });
     });
 });
 
