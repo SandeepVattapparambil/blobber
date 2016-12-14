@@ -151,6 +151,11 @@ router.post('/update_profile', function(req, res, next) {
     }
 });
 
+/* Get Settings */
+router.get('/home/:user/settings', function(req, res, next) {
+    console.log('working');
+});
+
 /* Logout */
 router.get('/logout', function(req, res, next) {
     if (req.session) {
