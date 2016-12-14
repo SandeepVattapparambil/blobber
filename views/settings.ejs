@@ -54,21 +54,56 @@
     <div class="container">
         <!-- Page Content goes here -->
         <div class="row">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-content grey-text">
-              <span class="card-title">Settings • <%=user%></span>
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <span class="card-title">Settings • <%=user%></span>
+                    </div>
+                    <div class="rule"></div>
+                    <div class="card-content grey-text">
+                        <table class="bordered striped highlight">
+                            <thead>
+                                <tr>
+                                    <th data-field="id">#</th>
+                                    <th data-field="first_name">First Name</th>
+                                    <th data-field="last_name">Last Name</th>
+                                    <th data-field="user_name">User Name</th>
+                                    <th data-field="user_type">User Type</th>
+                                    <th data-field="user_type">Options</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                  <form id="settings_entry1" name="settings_entry1" method="post" action="/settings-entry">
+                                    <td>1</td>
+                                    <td>Sandeep</td>
+                                    <td>Vattapparambil</td>
+                                    <td>sandeepvtprl</td>
+                                    <td>admin</td>
+                                    <td></td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                  <form id="settings_entry2" name="settings_entry2" method="post" action="/settings-entry">
+                                    <td>1</td>
+                                    <td>Sandeep</td>
+                                    <td>Vattapparambil</td>
+                                    <td>sandeepvtprl</td>
+                                    <td>admin</td>
+                                    <td></td>
+                                    </form>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
             </div>
-            <div class="rule"></div>
-            <div class="card-content grey-text">
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
         </div>
-      </div>
 
     </div>
 

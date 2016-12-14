@@ -44,6 +44,9 @@
 
 /******************************************************************************/
 
+
+/* badge on brand name*/
+
 #brand_badge {
     display: inline-block;
     position: relative;
@@ -51,5 +54,15 @@
     margin-left: 4px;
     line-height: 22px;
     height: 22px;
-    top:-5px;
+    top: -5px;
+}
+
+
+/******************************************************************************/
+
+
+/* settings table highlight */
+
+table.highlight>tbody>tr:hover {
+    background-color: #f0f4c3 ;
 }

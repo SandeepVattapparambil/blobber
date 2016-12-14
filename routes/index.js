@@ -9,7 +9,8 @@ var userSchema = new Schema({
     first_name: String,
     last_name: String,
     user_name: String,
-    password: String
+    password: String,
+    type: String
 }, {
     collection: 'blobber_user'
 });
@@ -100,12 +101,14 @@ router.get('/home/:user', function(req, res, next) {
         var last_name = user.last_name;
         var user_name = user.user_name;
         var password = user.password;
+        var user_type = user.type;
         res.render('profile', {
             message: "",
             first_name: first_name,
             last_name: last_name,
             user_name: user_name,
-            password: password
+            password: password,
+            type: user_type
         });
     });
 });
@@ -121,7 +124,7 @@ router.post('/update_profile', function(req, res, next) {
         var last_name = req.body.last_name;
         var user_name = req.body.user_name;
         var password = req.body.password;
-        console.log("" + first_name + " " + last_name + " " + user_name + " " + password + "");
+        //console.log("" + first_name + " " + last_name + " " + user_name + " " + password + "");
         User.findOne({
             user_name: identifier
         }, function(err, user) {
@@ -156,9 +159,21 @@ router.get('/home/:user/settings', function(req, res, next) {
     if (req.session) {
         var user = req.session.user_name;
     }
-    res.render('settings', {
-        user: user,
-        message: ''
+    User.findOne({
+        user_name: user
+    }, function(err, user) {
+        if (err) {
+            res.redirect('/', {
+                message: 'Cannot find user!'
+            })
+        }
+        var first_name = user.first_name;
+        var last_name =user.last_name;
+        var full_name = first_name+" "+last_name;
+        res.render('settings', {
+            user: full_name,
+            message: ''
+        });
     });
 });
 
