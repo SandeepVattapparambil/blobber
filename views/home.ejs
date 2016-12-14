@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Blobber • Home</title>
+    <title>Blobber • Home</title>
     <!--Import Google Icon Font-->
     <link href="stylesheets/icon.css" rel="stylesheet">
     <!--Import materialize.css-->
@@ -30,11 +30,16 @@
                 <a href="#!" class="brand-logo grey-text">Blobber <span id="brand_badge" class="new badge"></span></a>
                 <a href="#" data-activates="slide-out" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
+                    <li class="active"><a href="/home" class="grey-text"><i class="material-icons left">home</i>Home</a></li>
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button grey-text" href="#!" data-activates="dropdown1"><%=user%>
-                  <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li>
+                        <a class="dropdown-button grey-text" href="#!" data-activates="dropdown1">
+                            <%=user%>
+                                <i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
                 <ul id="slide-out" class="side-nav">
+                    <li><a href="/home"><i class="material-icons left">home</i>Home</a></li>
                     <li><a href="/home/<%=user%>">Profile</a></li>
                     <li><a href="#!">Settings</a></li>
                     <li>
@@ -45,7 +50,6 @@
             </div>
         </div>
     </nav>
-
 
     <div class="container">
         <!-- Page Content goes here -->
