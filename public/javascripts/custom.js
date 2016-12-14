@@ -26,9 +26,15 @@ $(document).ready(function() {
         belowOrigin: true, // Displays dropdown below the button
         alignment: 'left' // Displays dropdown with edge aligned to the left of button
     });
+    //Material Select init
+    $('select').material_select();
     //Profile form change
     $('#profile').change(function() {
         $('#profile_cancel').toggleClass('disabled');
         $('#profile_update').toggleClass('disabled');
+    });
+    //Add new user
+    $('#add_new_user').click(function(){
+
     });
 });
