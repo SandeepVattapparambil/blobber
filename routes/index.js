@@ -92,6 +92,8 @@ router.get('/home/:user', function(req, res, next) {
     }, function(err, user) {
         if (err) {
             var message = 'Cannot find user!';
+            console.log(err);
+            res.redirect('/');
         }
         //console.log(user);
         var first_name = user.first_name;
@@ -125,6 +127,7 @@ router.post('/update_profile', function(req, res, next) {
         }, function(err, user) {
             if (err) {
                 var message = 'Cannot find user!';
+                console.log(err);
             }
             User.update({
                 first_name: first_name,

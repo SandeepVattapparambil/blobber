@@ -80,8 +80,8 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <button class="btn-flat teal white-text waves-effect waves-light" type="reset">Cancel</button>
-                            <button class="btn-flat teal white-text waves-effect waves-light" type="submit">Save</button> </div>
+                            <button id="profile_cancel" class="btn-flat teal white-text waves-effect waves-light disabled" type="reset">Cancel</button>
+                            <button id="profile_update" class="btn-flat teal white-text waves-effect waves-light disabled" type="submit">Save</button> </div>
                     </form>
                 </div>
             </div>
@@ -101,7 +101,7 @@
     var message = "<%=message%>";
     if (message) {
         Materialize.toast(message, 4000);
-    } 
+    }
     </script>
 </body>
 
