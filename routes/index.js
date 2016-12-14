@@ -101,7 +101,7 @@ router.get('/home/:user', function(req, res, next) {
         var user_name = user.user_name;
         var password = user.password;
         res.render('profile', {
-            message : "",
+            message: "",
             first_name: first_name,
             last_name: last_name,
             user_name: user_name,
@@ -153,7 +153,13 @@ router.post('/update_profile', function(req, res, next) {
 
 /* Get Settings */
 router.get('/home/:user/settings', function(req, res, next) {
-    console.log('working');
+    if (req.session) {
+        var user = req.session.user_name;
+    }
+    res.render('settings', {
+        user: user,
+        message: ''
+    });
 });
 
 /* Logout */

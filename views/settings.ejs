@@ -4,13 +4,13 @@
 <head>
     <title>Blobber • Home</title>
     <!--Import Google Icon Font-->
-    <link href="stylesheets/icon.css" rel="stylesheet">
+    <link href="../../stylesheets/icon.css" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="stylesheets/materialize.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../stylesheets/materialize.css" media="screen,projection" />
     <!-- Custom css-->
-    <link type="text/css" rel="stylesheet" href="stylesheets/custom.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../stylesheets/custom.css" media="screen,projection" />
     <!--Import nprogress.css-->
-    <link rel='stylesheet' href='stylesheets/nprogress.css' />
+    <link rel='stylesheet' href='../../stylesheets/nprogress.css' />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +20,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="/home/<%=user%>">Profile</a></li>
-        <li><a href="#!">Settings</a></li>
+        <li><a href="/home/<%=user%>/settings">Settings</a></li>
         <li class="divider"></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
@@ -30,7 +30,7 @@
                 <a href="#!" class="brand-logo grey-text">Blobber <span id="brand_badge" class="new badge"></span></a>
                 <a href="#" data-activates="slide-out" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li class="active"><a href="/home" class="grey-text"><i class="material-icons left">home</i>Home</a></li>
+                    <li><a href="/home" class="grey-text"><i class="material-icons left">home</i>Home</a></li>
                     <!-- Dropdown Trigger -->
                     <li>
                         <a class="dropdown-button grey-text" href="#!" data-activates="dropdown1">
@@ -41,7 +41,7 @@
                 <ul id="slide-out" class="side-nav">
                     <li><a href="/home"><i class="material-icons left">home</i>Home</a></li>
                     <li><a href="/home/<%=user%>">Profile</a></li>
-                    <li><a href="#!">Settings</a></li>
+                    <li><a href="/home/<%=user%>/settings">Settings</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
@@ -53,17 +53,34 @@
 
     <div class="container">
         <!-- Page Content goes here -->
+        <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content grey-text">
+              <span class="card-title">Settings • <%=user%></span>
+            </div>
+            <div class="rule"></div>
+            <div class="card-content grey-text">
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!--Import Materialize.js-->
-    <script type="text/javascript" src="javascripts/materialize.js"></script>
+    <script type="text/javascript" src="../../javascripts/materialize.js"></script>
     <!--Import nprogress.js-->
-    <script src='javascripts/nprogress.js'></script>
+    <script src='../../javascripts/nprogress.js'></script>
 
     <!--Import Custom.js-->
-    <script type="text/javascript" src="javascripts/custom.js"></script>
+    <script type="text/javascript" src="../../javascripts/custom.js"></script>
     <script>
         var message = "<%=message%>";
         if (message) {
