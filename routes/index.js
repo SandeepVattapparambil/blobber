@@ -51,7 +51,6 @@ router.get('/get-data', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    console.log(username + password);
     User.findOne({
         user_name: username,
         password: password
@@ -87,8 +86,22 @@ router.get('/home/:user', function(req, res, next) {
     if (req.session) {
         var user = req.session.user_name;
     }
+    ///console.log(user);
+    User.findOne({
+        user_name: user
+    }, function(err, user) {
+        if (err) {
+            var message = 'Cannot find user!';
+        }
+        //console.log(user);
+        var first_name = user.first_name;
+        var last_name = user.last_name;
+        var user_name = user.user_name;
+        var password = user.password;
+    });
     res.render('profile', {
         user: user,
+        first_name: firstName
     });
 });
 

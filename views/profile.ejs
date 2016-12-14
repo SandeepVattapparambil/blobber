@@ -2,7 +2,9 @@
 <html>
 
 <head>
-  <title>Blobber • <%=user%></title>
+    <title>Blobber •
+        <%=user%>
+    </title>
     <!--Import Google Icon Font-->
     <link href="../stylesheets/icon.css" rel="stylesheet">
     <!--Import materialize.css-->
@@ -31,8 +33,11 @@
                 <a href="#" data-activates="slide-out" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button grey-text" href="#!" data-activates="dropdown1"><%=user%>
-                  <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li>
+                        <a class="dropdown-button grey-text" href="#!" data-activates="dropdown1">
+                            <%=user%>
+                                <i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
                 </ul>
                 <ul id="slide-out" class="side-nav">
                     <li><a href="/home/<%=user%>">Profile</a></li>
@@ -49,6 +54,39 @@
 
     <div class="container">
         <!-- Page Content goes here -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <form>
+                        <div class="card-content grey-text">
+                            <span class="card-title">Profile {{first_name}}</span>
+                            <div class="row">
+                                <div class="input-field col s12 m6">
+                                    <input placeholder="<%=first_name%>" id="first_name" type="text" class="validate">
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="last_name" type="text" class="validate">
+                                    <label for="last_name">Last Name</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="user_name" placeholder="<%=user%>" type="text" class="validate">
+                                    <label for="user_name">User Name</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="password" type="text" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" class="btn-flat teal white-text waves-effect waves-light">Cancel</a>
+                            <a href="#" class="btn-flat teal white-text waves-effect waves-light">Save</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </div>
     <!--Import jQuery before materialize.js-->
@@ -61,7 +99,6 @@
     <!--Import Custom.js-->
     <script type="text/javascript" src="../javascripts/custom.js"></script>
     <script>
-        
     </script>
 </body>
 
