@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col s12">
                 <div class="card">
-                    <form>
+                    <form id="profile" name="profile" method="POST" action="/update_profile">
                         <div class="card-content grey-text">
                             <span class="card-title">Profile • <%=first_name%></span>
                             <div class="row">
@@ -80,9 +80,8 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <a href="#" class="btn-flat teal white-text waves-effect waves-light">Cancel</a>
-                            <a href="#" class="btn-flat teal white-text waves-effect waves-light">Save</a>
-                        </div>
+                            <button class="btn-flat teal white-text waves-effect waves-light" type="reset">Cancel</button>
+                            <button class="btn-flat teal white-text waves-effect waves-light" type="submit">Save</button> </div>
                     </form>
                 </div>
             </div>
