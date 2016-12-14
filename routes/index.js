@@ -99,6 +99,7 @@ router.get('/home/:user', function(req, res, next) {
         var user_name = user.user_name;
         var password = user.password;
         res.render('profile', {
+            message : "",
             first_name: first_name,
             last_name: last_name,
             user_name: user_name,
@@ -111,7 +112,8 @@ router.get('/home/:user', function(req, res, next) {
 router.post('/update_profile', function(req, res, next) {
     if (req.session && req.body) {
         //for identification only
-        var identifier = req.session.username;
+        var identifier = req.session.user_name;
+        console.log(identifier);
         //form data
         var first_name = req.body.first_name;
         var last_name = req.body.last_name;
@@ -129,13 +131,17 @@ router.post('/update_profile', function(req, res, next) {
                 last_name: last_name,
                 user_name: user_name,
                 password: password
-            }, function(err, user){
-              if(err){
-                var message = 'Cannot update user!';
-              }
-              res.render('profile', {
-                  message: "Successfully updated " + identifier
-              });
+            }, function(err, user) {
+                if (err) {
+                    var message = 'Cannot update user!';
+                }
+                res.render('profile', {
+                    message: "Successfully updated " + identifier,
+                    first_name: first_name,
+                    last_name: last_name,
+                    user_name: user_name,
+                    password: password
+                });
             });
 
         });

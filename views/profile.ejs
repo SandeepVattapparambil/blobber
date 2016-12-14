@@ -98,6 +98,10 @@
     <!--Import Custom.js-->
     <script type="text/javascript" src="../javascripts/custom.js"></script>
     <script>
+    var message = "<%=message%>";
+    if (message) {
+        Materialize.toast(message, 4000);
+    } 
     </script>
 </body>
 
