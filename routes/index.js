@@ -109,11 +109,13 @@ router.get('/home/:user', function(req, res, next) {
 
 /* Update profile form */
 router.post('/update_profile', function(req, res, next) {
-    var first_name = req.body.first_name;
-    var last_name = req.body.last_name;
-    var user_name = req.body.user_name;
-    var password = req.body.password;
-    console.log(first_name);
+    if (req.body) {
+        var first_name = req.body.first_name;
+        var last_name = req.body.last_name;
+        var user_name = req.body.user_name;
+        var password = req.body.password;
+        console.log(first_name);
+    }
 });
 
 /* Logout */

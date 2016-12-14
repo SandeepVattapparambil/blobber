@@ -57,24 +57,24 @@
         <div class="row">
             <div class="col s12">
                 <div class="card">
-                    <form id="profile" name="profile" method="POST" action="/update_profile">
+                    <form id="profile" name="profile" method="post" action="/update_profile">
                         <div class="card-content grey-text">
                             <span class="card-title">Profile • <%=first_name%></span>
                             <div class="row">
                                 <div class="input-field col s12 m6">
-                                    <input placeholder="<%=first_name%>" id="first_name" name="first_name" type="text" class="validate">
+                                    <input value="<%=first_name%>" id="first_name" name="first_name" type="text" class="validate">
                                     <label for="first_name">First Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input placeholder="<%=last_name%>" id="last_name" name="last_name" type="text" class="validate">
+                                    <input value="<%=last_name%>" id="last_name" name="last_name" type="text" class="validate">
                                     <label for="last_name">Last Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input placeholder="<%=user_name%>" id="user_name" name="user_name" type="text" class="validate">
+                                    <input value="<%=user_name%>" id="user_name" name="user_name" type="text" class="validate">
                                     <label for="user_name">User Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input placeholder="<%=password%>" id="password" name="password" type="text" class="validate">
+                                    <input value="<%=password%>" id="password" name="password" type="text" class="validate">
                                     <label for="password">Password</label>
                                 </div>
                             </div>
