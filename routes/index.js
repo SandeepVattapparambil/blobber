@@ -53,6 +53,20 @@ router.get('/get-data', function(req, res, next) {
         });
 });
 ///////////////////////////////////////////////////////////////////////////////
+/* Get all users*/
+router.get('/get-all-users', function(req, res, next) {
+    User.find()
+        .then(function(doc) {
+            res.setHeader(
+                'Content-Type',
+                'application/json',
+                'charset=utf-8'
+            );
+            res.send(200, doc);
+        });
+
+});
+///////////////////////////////////////////////////////////////////////////////
 /* Login page. */
 router.post('/login', function(req, res, next) {
     var username = req.body.username;
@@ -103,10 +117,8 @@ router.get('/home/:user', function(req, res, next) {
             }, function(err, user) {
                 if (err) {
                     var message = 'Cannot find user!';
-                    //console.log(err);
                     res.redirect('/');
                 }
-                //console.log(user);
                 var first_name = user.first_name;
                 var last_name = user.last_name;
                 var user_name = user.user_name;
