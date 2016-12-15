@@ -19,6 +19,7 @@
     "express-session": "^1.14.2",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
+    "gulp-nodemon": "^2.2.1",
     "mongoose": "^4.7.2",
     "nprogress": "^0.2.0"
   }
