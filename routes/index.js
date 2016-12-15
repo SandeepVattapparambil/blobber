@@ -74,43 +74,54 @@ router.post('/login', function(req, res, next) {
 /* Get Home */
 router.get('/home', function(req, res, next) {
     if (req.session) {
-        var user = req.session.user_name;
+        if (req.session.user_name && req.session.user_name != null) {
+            var user = req.session.user_name;
+            res.render('home', {
+                message: "Welcome " + user,
+                user: user
+            });
+        } else {
+            res.redirect('/');
+        }
+    } else {
+        res.redirect('/');
     }
-    res.render('home', {
-        message: "Welcome " + user,
-        user: user
-    });
 });
 
 /* Get Profile */
 router.get('/home/:user', function(req, res, next) {
     if (req.session) {
-        var user = req.session.user_name;
-    }
-    ///console.log(user);
-    User.findOne({
-        user_name: user
-    }, function(err, user) {
-        if (err) {
-            var message = 'Cannot find user!';
-            //console.log(err);
+        if (req.session.user_name && req.session.user_name != null) {
+            var user = req.session.user_name;
+            User.findOne({
+                user_name: user
+            }, function(err, user) {
+                if (err) {
+                    var message = 'Cannot find user!';
+                    //console.log(err);
+                    res.redirect('/');
+                }
+                //console.log(user);
+                var first_name = user.first_name;
+                var last_name = user.last_name;
+                var user_name = user.user_name;
+                var password = user.password;
+                var user_type = user.type;
+                res.render('profile', {
+                    message: "",
+                    first_name: first_name,
+                    last_name: last_name,
+                    user_name: user_name,
+                    password: password,
+                    type: user_type
+                });
+            });
+        } else {
             res.redirect('/');
         }
-        //console.log(user);
-        var first_name = user.first_name;
-        var last_name = user.last_name;
-        var user_name = user.user_name;
-        var password = user.password;
-        var user_type = user.type;
-        res.render('profile', {
-            message: "",
-            first_name: first_name,
-            last_name: last_name,
-            user_name: user_name,
-            password: password,
-            type: user_type
-        });
-    });
+    } else {
+        res.redirect('/');
+    }
 });
 
 /* Update profile form */
@@ -180,7 +191,6 @@ router.get('/home/:user/settings', function(req, res, next) {
         } else {
             res.redirect('/');
         }
-
     } else {
         res.redirect('/');
     }
