@@ -76,7 +76,7 @@
                                     <th data-field="user_type">Options</th>
                                 </tr>
                             </thead>
-                            <tbody id="table_data_body">
+                            <tbody id="table_data_body" style="display:none">
                                 <!-- table data from api gets here-->
                             </tbody>
                         </table>
@@ -153,12 +153,14 @@
         $(document).ready(function() {
             //jqxhr function to get all users
             $.getJSON("/get-all-users", function(data) {
-                var i = 0;
+                var i = 1;
                 var html = '';
+                $('#data_loader').hide();
+                $('#table_data_body').show();
                 $.each(data, function(key, item) {
                     //var html = ""+item.first_name+" "+item.last_name+" "+item.user_name+" "+item.password+" "+item.type+" ";
-                    var html = "<tr><td>"+i+"</td><td>"+item.first_name+"</td><td>"+item.last_name+"</td><td>"+item.user_name+"</td><td>"+item.password+"</td><td><a class='waves-effect waves-light btn'>button</a></td></tr>";
-                    console.log(html);
+                    var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + item.type +
+                        "</td><td><button class='waves-effect waves-light btn'><i class='material-icons'>delete</i></button></td></tr>";
                     $('#table_data_body').append(html);
                     i++;
                 });
