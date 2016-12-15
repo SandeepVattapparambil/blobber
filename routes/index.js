@@ -169,9 +169,11 @@ router.get('/home/:user/settings', function(req, res, next) {
                 }
                 var first_name = user.first_name;
                 var last_name = user.last_name;
+                var user_name = user.user_name;
                 var full_name = first_name + " " + last_name;
                 res.render('settings', {
-                    user: full_name,
+                    full_name: full_name,
+                    user: user_name,
                     message: ''
                 });
             });
