@@ -1,4 +1,8 @@
+///////////////////////////////////////////////////////////////////////////////
+//Index routes
+/* Instantiate Express Module*/
 var express = require('express');
+/* Instantiate express router module*/
 var router = express.Router();
 /*Mongoose driver for MongoDB*/
 var mongoose = require('mongoose');
@@ -16,7 +20,7 @@ var userSchema = new Schema({
 });
 //Instantiate User Schema
 var User = mongoose.model('User', userSchema);
-
+///////////////////////////////////////////////////////////////////////////////
 //Check MongoDB service is running or not
 var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connect) {
     if (db_connect) {
@@ -25,7 +29,7 @@ var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connec
         console.log('⚠️ Database Service is not running!');
     }
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* GET home page. */
 router.get('/', function(req, res, next) {
     if (req.session) {
@@ -38,6 +42,7 @@ router.get('/', function(req, res, next) {
         message: message_string
     });
 });
+///////////////////////////////////////////////////////////////////////////////
 /* Get all data from selected collection */
 router.get('/get-data', function(req, res, next) {
     User.find()
@@ -47,7 +52,7 @@ router.get('/get-data', function(req, res, next) {
             });
         });
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* Login page. */
 router.post('/login', function(req, res, next) {
     var username = req.body.username;
@@ -57,7 +62,6 @@ router.post('/login', function(req, res, next) {
         password: password
     }, function(err, user) {
         if (err) {
-            //console.log(err);
             res.redirect('/');
         }
         if (!user) {
@@ -71,6 +75,7 @@ router.post('/login', function(req, res, next) {
         res.redirect('/home');
     });
 });
+///////////////////////////////////////////////////////////////////////////////
 /* Get Home */
 router.get('/home', function(req, res, next) {
     if (req.session) {
@@ -87,7 +92,7 @@ router.get('/home', function(req, res, next) {
         res.redirect('/');
     }
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* Get Profile */
 router.get('/home/:user', function(req, res, next) {
     if (req.session) {
@@ -123,7 +128,7 @@ router.get('/home/:user', function(req, res, next) {
         res.redirect('/');
     }
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* Update profile form */
 router.post('/update_profile', function(req, res, next) {
     if (req.session && req.body) {
@@ -135,13 +140,11 @@ router.post('/update_profile', function(req, res, next) {
         var last_name = req.body.last_name;
         var user_name = req.body.user_name;
         var password = req.body.password;
-        //console.log("" + first_name + " " + last_name + " " + user_name + " " + password + "");
         User.findOne({
             user_name: identifier
         }, function(err, user) {
             if (err) {
                 var message = 'Cannot find user!';
-                //console.log(err);
                 res.redirect('/');
             }
             User.update({
@@ -166,7 +169,7 @@ router.post('/update_profile', function(req, res, next) {
         });
     }
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* Get Settings */
 router.get('/home/:user/settings', function(req, res, next) {
     if (req.session) {
@@ -195,7 +198,7 @@ router.get('/home/:user/settings', function(req, res, next) {
         res.redirect('/');
     }
 });
-
+///////////////////////////////////////////////////////////////////////////////
 /* Logout */
 router.get('/logout', function(req, res, next) {
     if (req.session) {
@@ -205,5 +208,5 @@ router.get('/logout', function(req, res, next) {
     logout_session.message = 'You have logged out !'
     res.redirect('/');
 });
-
+///////////////////////////////////////////////////////////////////////////////
 module.exports = router;
