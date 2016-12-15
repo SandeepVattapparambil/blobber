@@ -39,4 +39,8 @@ $(document).ready(function() {
       $('#add_user_form').slideDown();
     });
     //close new user slide down
+    $('#cancel_button, #close_button').click(function(){
+      $('#add_user_form').slideUp();
+      $('#add_new_user').removeClass('disabled');
+    })
 });

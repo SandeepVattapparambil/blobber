@@ -57,8 +57,8 @@ router.post('/login', function(req, res, next) {
         password: password
     }, function(err, user) {
         if (err) {
-            console.log(err);
-            return next(err);
+            //console.log(err);
+            res.redirect('/');
         }
         if (!user) {
             return res.render('index', {
@@ -93,7 +93,7 @@ router.get('/home/:user', function(req, res, next) {
     }, function(err, user) {
         if (err) {
             var message = 'Cannot find user!';
-            console.log(err);
+            //console.log(err);
             res.redirect('/');
         }
         //console.log(user);
@@ -130,7 +130,8 @@ router.post('/update_profile', function(req, res, next) {
         }, function(err, user) {
             if (err) {
                 var message = 'Cannot find user!';
-                console.log(err);
+                //console.log(err);
+                res.redirect('/');
             }
             User.update({
                 first_name: first_name,
@@ -140,6 +141,7 @@ router.post('/update_profile', function(req, res, next) {
             }, function(err, user) {
                 if (err) {
                     var message = 'Cannot update user!';
+                    res.redirect('/');
                 }
                 res.render('profile', {
                     message: "Successfully updated " + identifier,
