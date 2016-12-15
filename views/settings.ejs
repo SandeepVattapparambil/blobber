@@ -158,7 +158,6 @@
                 $('#data_loader').hide();
                 $('#table_data_body').show();
                 $.each(data, function(key, item) {
-                    //var html = ""+item.first_name+" "+item.last_name+" "+item.user_name+" "+item.password+" "+item.type+" ";
                     var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + item.type +
                         "</td><td><button id='option_btn' class='waves-effect waves-light btn-flat teal'><i class='material-icons'>delete</i></button></td></tr>";
                     if (item.type == 'user') {
