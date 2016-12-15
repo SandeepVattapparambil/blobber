@@ -77,14 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody id="table_data_body">
-                                    <tr>
-                                        <td data-field="id">1</td>
-                                        <td data-field="first_name">Sandeep</td>
-                                        <td data-field="last_name">Vattapparambil</td>
-                                        <td data-field="user_name">sandeepvtprl</td>
-                                        <td data-field="user_type">7293289047</td>
-                                        <td data-field="user_type">Options</td>
-                                    </tr>
+                                <!-- table data from api gets here-->
                             </tbody>
                         </table>
                     </div>
@@ -160,9 +153,14 @@
         $(document).ready(function() {
             //jqxhr function to get all users
             $.getJSON("/get-all-users", function(data) {
-                $.each(data, function(key, item){
-                  var html = ""+item.first_name+"";
-                  console.log(html);
+                var i = 0;
+                var html = '';
+                $.each(data, function(key, item) {
+                    //var html = ""+item.first_name+" "+item.last_name+" "+item.user_name+" "+item.password+" "+item.type+" ";
+                    var html = "<tr><td>"+i+"</td><td>"+item.first_name+"</td><td>"+item.last_name+"</td><td>"+item.user_name+"</td><td>"+item.password+"</td><td><a class='waves-effect waves-light btn'>button</a></td></tr>";
+                    console.log(html);
+                    $('#table_data_body').append(html);
+                    i++;
                 });
             });
         });
