@@ -34,13 +34,17 @@ $(document).ready(function() {
         $('#profile_update').toggleClass('disabled');
     });
     //Add new user slide down
-    $('#add_new_user').click(function(){
-      $(this).addClass('disabled');
-      $('#add_user_form').slideDown();
+    $('#add_new_user').click(function() {
+        $(this).addClass('disabled');
+        $('#add_user_form').slideDown();
     });
     //close new user slide down
-    $('#close_button').click(function(){
-      $('#add_user_form').slideUp();
-      $('#add_new_user').removeClass('disabled');
-    })
+    $('#close_button').click(function() {
+        $('#add_user_form').slideUp();
+        $('#add_new_user').removeClass('disabled');
+    });
+    //add user form change detect and update form button
+    $('#user_form').change(function() {
+        $('#cancel_button, #save_button').removeClass('disabled');
+    });
 });
