@@ -62,7 +62,10 @@
                     </div>
                     <div class="rule"></div>
                     <div class="card-content grey-text">
-                        <table class="bordered striped highlight">
+                        <div id="data_loader" class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                        <table id="data_table" class="bordered striped highlight">
                             <thead>
                                 <tr>
                                     <th data-field="id">#</th>
@@ -73,21 +76,15 @@
                                     <th data-field="user_type">Options</th>
                                 </tr>
                             </thead>
-
-                            <tbody>
-                                <tr>
-                                    <form id="settings_entry1" name="settings_entry1" method="post" action="/settings-entry">
-                                        <td>1</td>
-                                        <td>Sandeep</td>
-                                        <td>Vattapparambil</td>
-                                        <td>sandeepvtprl</td>
-                                        <td>admin</td>
-                                        <td>
-                                            <a class="waves-effect waves-teal btn-flat teal"><i class="material-icons">delete</i></a>
-                                        </td>
-                                    </form>
-                                </tr>
-
+                            <tbody id="table_data_body">
+                                    <tr>
+                                        <td data-field="id">1</td>
+                                        <td data-field="first_name">Sandeep</td>
+                                        <td data-field="last_name">Vattapparambil</td>
+                                        <td data-field="user_name">sandeepvtprl</td>
+                                        <td data-field="user_type">7293289047</td>
+                                        <td data-field="user_type">Options</td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
@@ -160,6 +157,12 @@
         if (message) {
             Materialize.toast(message, 4000);
         }
+        $(document).ready(function() {
+            //jqxhr function to get all users
+            $.getJSON("/get-all-users", function() {
+                console.log();
+            });
+        });
     </script>
 </body>
 
