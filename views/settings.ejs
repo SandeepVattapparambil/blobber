@@ -159,8 +159,11 @@
         }
         $(document).ready(function() {
             //jqxhr function to get all users
-            $.getJSON("/get-all-users", function() {
-                console.log();
+            $.getJSON("/get-all-users", function(data) {
+                $.each(data, function(key, item){
+                  var html = ""+item.first_name+"";
+                  console.log(html);
+                });
             });
         });
     </script>
