@@ -159,24 +159,29 @@ router.post('/update_profile', function(req, res, next) {
 /* Get Settings */
 router.get('/home/:user/settings', function(req, res, next) {
     if (req.session) {
-        var user = req.session.user_name;
-    }
-    User.findOne({
-        user_name: user
-    }, function(err, user) {
-        if (err) {
-            res.redirect('/', {
-                message: 'Cannot find user!'
-            })
+        if (req.session.user_name && req.session.user_name != null) {
+            var user = req.session.user_name;
+            User.findOne({
+                user_name: user
+            }, function(err, user) {
+                if (err) {
+                    res.redirect('/');
+                }
+                var first_name = user.first_name;
+                var last_name = user.last_name;
+                var full_name = first_name + " " + last_name;
+                res.render('settings', {
+                    user: full_name,
+                    message: ''
+                });
+            });
+        } else {
+            res.redirect('/');
         }
-        var first_name = user.first_name;
-        var last_name =user.last_name;
-        var full_name = first_name+" "+last_name;
-        res.render('settings', {
-            user: full_name,
-            message: ''
-        });
-    });
+
+    } else {
+        res.redirect('/');
+    }
 });
 
 /* Logout */
