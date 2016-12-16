@@ -73,7 +73,6 @@
                                     <th data-field="last_name">Last Name</th>
                                     <th data-field="user_name">User Name</th>
                                     <th data-field="user_type">User Type</th>
-                                    <th data-field="user_type">Options</th>
                                 </tr>
                             </thead>
                             <tbody id="table_data_body" style="display:none">
@@ -83,7 +82,7 @@
                     </div>
                     <div class="card-action">
                         <a id="add_new_user" href="javascript:void(0)" class="waves-effect waves-teal btn-flat teal white-text">
-                            <i class="material-icons left">add</i> Add</a>
+                            <i class="material-icons left">add</i>  Add</a>
                     </div>
                 </div>
             </div>
@@ -132,8 +131,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <!--Import jQuery before materialize.js-->
@@ -160,12 +157,10 @@
                 $.each(data, function(key, item) {
                     if (item.type == 'admin') {
                         var option_html = "<div id='user_label" + i + "' class='chip teal lighten-4 teal-text'>" + item.type + "</div>";
-                        var button_html = "<button id='option_btn" + i + "'class='waves-effect waves-light btn-flat teal disabled'><i class='material-icons'>delete</i></button>";
                     } else if (item.type == 'user') {
                         var option_html = "<div id='user_label" + i + "' class='chip grey-text'>" + item.type + "</div>";
-                        var button_html = "<button id='option_btn" + i + "' type='submit' class='waves-effect waves-light btn-flat teal'><i class='material-icons'>delete</i></button>";
                     }
-                    var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + option_html + "</td><td>" + button_html + "</td></tr>";
+                    var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + option_html + "</td></tr>";
                     $('#table_data_body').append(html);
                     i++;
                 });
