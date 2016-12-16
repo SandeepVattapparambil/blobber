@@ -158,14 +158,14 @@
                 $('#data_loader').hide();
                 $('#table_data_body').show();
                 $.each(data, function(key, item) {
-                    var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td><div id='user_label"+i+"' class='chip teal lighten-4 teal-text'>" + item.type +
-                        "</div></td><td><button id='option_btn"+i+"' class='waves-effect waves-light btn-flat teal'><i class='material-icons'>delete</i></button></td></tr>";
-                    var string = item.type;
-                    if (string == 'admin') {
-                        $('#option_btn').addClass('disabled');
-                        $('#user_label').addClass('teal lighten-4');
+                    if (item.type == 'admin') {
+                        var option_html = "<div id='user_label" + i + "' class='chip teal lighten-4 teal-text'>" + item.type + "</div>";
+                        var button_html = "<button id='option_btn" + i + "'class='waves-effect waves-light btn-flat teal disabled'><i class='material-icons'>delete</i></button>";
+                    } else if (item.type == 'user') {
+                        var option_html = "<div id='user_label" + i + "' class='chip grey-text'>" + item.type + "</div>";
+                        var button_html = "<button id='option_btn" + i + "'class='waves-effect waves-light btn-flat teal'><i class='material-icons'>delete</i></button>";
                     }
-
+                    var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + option_html + "</td><td>" + button_html + "</td></tr>";
                     $('#table_data_body').append(html);
                     i++;
                 });

@@ -62,7 +62,7 @@ router.get('/get-all-users', function(req, res, next) {
                 'application/json',
                 'charset=utf-8'
             );
-            res.send(200, doc);
+            res.status(200).send(doc);
         });
 
 });
