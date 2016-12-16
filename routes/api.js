@@ -1,4 +1,8 @@
+///////////////////////////////////////////////////////////////////////////////
+//API routes
+/* Instantiate Express Module*/
 var express = require('express');
+
 var router = express.Router();
 
 /* API */

@@ -67,6 +67,37 @@ router.get('/get-all-users', function(req, res, next) {
 
 });
 ///////////////////////////////////////////////////////////////////////////////
+/* check user_name */
+router.post('/check-user_name', function(req, res, next) {
+    if (req.body.user_name) {
+        var user_name = req.body.user_name;
+        User.findOne({
+            user_name: user_name
+        }, function(err, user) {
+            if (err) {
+                
+            }
+            res.setHeader(
+                'Content-Type',
+                'application/json',
+                'charset=utf-8'
+            );
+            res.status(200).send(JSON.stringify({
+                "message": "Exists!"
+            }));
+        });
+    } else {
+        res.setHeader(
+            'Content-Type',
+            'application/json',
+            'charset=utf-8'
+        );
+        res.status(200).send(JSON.stringify({
+            "message": "Error finding user name"
+        }));
+    }
+});
+///////////////////////////////////////////////////////////////////////////////
 /* Login page. */
 router.post('/login', function(req, res, next) {
     var username = req.body.username;

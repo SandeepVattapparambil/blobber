@@ -82,7 +82,7 @@
                     </div>
                     <div class="card-action">
                         <a id="add_new_user" href="javascript:void(0)" class="waves-effect waves-teal btn-flat teal white-text">
-                            <i class="material-icons left">add</i>  Add</a>
+                            <i class="material-icons left">add</i> Add</a>
                     </div>
                 </div>
             </div>
@@ -90,35 +90,35 @@
         <div id="add_user_form" class="row" style="display:none">
             <div class="col s12">
                 <div class="card">
-                    <form id="user_form">
+                    <form id="user_form" name="user_form" method="post" action="/add-user">
                         <div class="card-content grey-text">
                             <span id="close_button" class="card-title grey-text">Add New User<i class="material-icons right">close</i></span>
                             <div class="row">
                                 <div class="input-field col s12 m6">
-                                    <input id="first_name" type="text" class="validate" required>
+                                    <input id="first_name" name="first_name" type="text" class="validate" required>
                                     <label for="first_name">First Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="last_name" type="text" class="validate" required>
+                                    <input id="last_name" name="last_name" type="text" class="validate" required>
                                     <label for="last_name">Last Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="user_name" type="text" class="validate" required>
+                                    <input id="user_name" name="user_name" type="text" class="validate" required>
                                     <label for="user_name">User Name</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <select>
+                                    <select name="user_type">
                                 <option value="" disabled selected>User Type</option>
                                 <option value="1">Admin</option>
                                 <option value="1">User</option>
                               </select>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="password" type="text" class="validate" required>
+                                    <input id="password" name="password" type="text" class="validate" required>
                                     <label for="password">Password</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="password_confirm" type="text" class="validate" required>
+                                    <input id="password_confirm" name="confirm_password" type="text" class="validate" required>
                                     <label for="password_confirm">Confirm Password</label>
                                 </div>
                             </div>
@@ -163,6 +163,22 @@
                     var html = "<tr><td>" + i + "</td><td>" + item.first_name + "</td><td>" + item.last_name + "</td><td>" + item.user_name + "</td><td>" + option_html + "</td></tr>";
                     $('#table_data_body').append(html);
                     i++;
+                });
+            });
+        });
+        $(document).ready(function() {
+            //check user_name
+            $('#user_name').change(function() {
+                var data_user_name = $(this).val();
+                console.log(data_user_name);
+                $.ajax({
+                    type: "POST",
+                    url: "/check-user_name",
+                    data: data_user_name,
+                    success: function(data) {
+                        console.log(data);
+                    },
+                    dataType: "json"
                 });
             });
         });
