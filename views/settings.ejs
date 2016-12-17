@@ -108,9 +108,8 @@
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <select name="user_type">
-                                <option value="" disabled selected>User Type</option>
-                                <option value="1">Admin</option>
-                                <option value="1">User</option>
+                                <option value="Admin" selected>Admin</option>
+                                <option value="User">User</option>
                               </select>
                                 </div>
                                 <div class="input-field col s12 m6">
@@ -215,13 +214,13 @@
                 var val1 = $('#pass_word').val();
                 var val2 = $('#password_confirm').val();
                 if (val1 == val2) {
-                    $('#password_p').addClass('green-text');
-                    $('#password_p').text('Passwords match');
+                    $('#password_p').addClass('amber-text');
+                    $('#password_p').text('Passwords match !');
                     $('#save_button').removeClass('disabled');
                 }
                 if (val1 != val2) {
-                    $('#password_p').addClass('red-text');
-                    $('#password_p').text('Passwords doesnot match');
+                    $('#password_p').addClass('amber-text');
+                    $('#password_p').text('Passwords doesnot match !');
                     $('#save_button').addClass('disabled');
                 }
             });
