@@ -94,9 +94,20 @@ router.post('/login', function(req, res, next) {
 router.post('/check-user_name', function(req, res, next) {
     if (req.body.username) {
         var data = req.body.username;
-        res.json(data);
-    }else{
-      res.json('No data send');
+        //res.json(data);
+        User.findOne({
+            user_name: data
+        }, function(err, user) {
+            if (err) {
+                res.json('Error');
+            } else if (!user) {
+                res.json('No user found');
+            } else if (user) {
+                res.json('Exists');
+            }
+        });
+    } else {
+        res.json('No data send');
     }
 });
 ///////////////////////////////////////////////////////////////////////////////
