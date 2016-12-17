@@ -169,17 +169,14 @@
         $(document).ready(function() {
             //check user_name
             $('#user_name').change(function() {
-                var data_user_name = $(this).val();
-                console.log(data_user_name);
-                $.ajax({
-                    type: "POST",
-                    url: "/check-user_name",
-                    data: data_user_name,
-                    success: function(data) {
+                var username = $(this).val();
+                console.log(username);
+                $.post("/check-user_name", {
+                        username: username
+                    })
+                    .done(function(data) {
                         console.log(data);
-                    },
-                    dataType: "json"
-                });
+                    });
             });
         });
     </script>

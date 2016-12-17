@@ -94,9 +94,9 @@ router.post('/login', function(req, res, next) {
 router.post('/check-user_name', function(req, res, next) {
     if (req.body.username) {
         var data = req.body.username;
-        res.send(JSON.stringify(data));
-    } else {
-        res.send('username not set');
+        res.json(data);
+    }else{
+      res.json('No data send');
     }
 });
 ///////////////////////////////////////////////////////////////////////////////
