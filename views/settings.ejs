@@ -118,7 +118,7 @@
                                     <label for="password">Password</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input id="password_confirm" name="confirm_password" type="text" class="validate" required>
+                                    <input id="password_confirm" name="password_confirm" type="text" class="validate" required>
                                     <label for="password_confirm">Confirm Password</label>
                                 </div>
                             </div>
@@ -175,16 +175,78 @@
                         username: username
                     })
                     .done(function(data) {
-                        ///console.log(data);
+                        //console.log(data);
                         if (data == 'Exists') {
                             $('#user_name+label').text('User Name Not available');
-                            $('#user_name+label').css({'color':'red'});
+                            $('#user_name+label').css({
+                                'color': 'red'
+                            });
+                            $('#user_name:focus').css({
+                                'color': 'red',
+                                'border-bottom': 'red',
+                                'box-shadow': '0 1px 0 0 red'
+                            });
+                            $('#save_button').addClass('disabled');
                         }
                         if (data == 'No user found') {
                             $('#user_name+label').text('User Name available');
-                            $('#user_name+label').css({'color':'green'});
+                            $('#user_name+label').css({
+                                'color': 'green'
+                            });
+                            $('#user_name:focus').css({
+                                'color': 'green',
+                                'border-bottom': 'green',
+                                'box-shadow': '0 1px 0 0 green'
+                            });
+                            $('#save_button').removeClass('disabled');
+                        }
+                        if (data == 'No data send') {
+                            $('#user_name+label').text('User Name');
+                            $('#user_name+label').css({
+                                'color': 'green'
+                            });
+                            $('#save_button').addClass('disabled');
                         }
                     });
+            });
+        });
+        $(document).ready(function() {
+            //Confirm password
+            $('#pass_word, #password_confirm').keyup(function() {
+                var password = $('#pass_word').val();
+                var password_confirm = $('#password_confirm').val();
+                if (password_confirm == password) {
+                    $('#pass_word+label, #password_confirm+label').css({
+                        'color': 'green'
+                    });
+                    $('#pass_word.valid, #password_confirm.valid').css({
+                      'color': 'green',
+                      'border-bottom': 'green',
+                      'box-shadow': '0 1px 0 0 green'
+                    });
+                    $('#pass_word:focus.valid, #password_confirm:focus.valid').css({
+                      'color': 'green',
+                      'border-bottom': 'green',
+                      'box-shadow': '0 1px 0 0 green'
+                    });
+                    $('#save_button').removeClass('disabled');
+                }
+                if (password_confirm != password) {
+                    $('#pass_word+label, #password_confirm+label').css({
+                        'color': 'red'
+                    });
+                    $('#pass_word.valid, #password_confirm.valid').css({
+                      'color': 'red',
+                      'border-bottom': 'red',
+                      'box-shadow': '0 1px 0 0 red'
+                    });
+                    $('#pass_word:focus.valid, #password_confirm:focus.valid').css({
+                      'color': 'red',
+                      'border-bottom': 'red',
+                      'box-shadow': '0 1px 0 0 red'
+                    });
+                    $('#save_button').addClass('disabled');
+                }
             });
         });
     </script>
