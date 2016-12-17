@@ -168,14 +168,22 @@
         });
         $(document).ready(function() {
             //check user_name
-            $('#user_name').change(function() {
+            $('#user_name').keyup(function() {
                 var username = $(this).val();
                 console.log(username);
                 $.post("/check-user_name", {
                         username: username
                     })
                     .done(function(data) {
-                        console.log(data);
+                        ///console.log(data);
+                        if (data == 'Exists') {
+                            $('#user_name+label').text('User Name Not available');
+                            $('#user_name+label').css({'color':'red'});
+                        }
+                        if (data == 'No user found') {
+                            $('#user_name+label').text('User Name available');
+                            $('#user_name+label').css({'color':'green'});
+                        }
                     });
             });
         });
