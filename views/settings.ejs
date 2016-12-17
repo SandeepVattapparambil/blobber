@@ -122,6 +122,7 @@
                                     <label for="password_confirm">Confirm Password</label>
                                 </div>
                             </div>
+                            <p id="password_p"></p>
                         </div>
                         <div class="card-action">
                             <button id="cancel_button" type="reset" class="waves-effect waves-teal btn-flat teal lighten-4 teal-text disabled">Cancel</button>
@@ -208,6 +209,21 @@
                             $('#save_button').addClass('disabled');
                         }
                     });
+            });
+            //Paswword check
+            $('#pass_word, #password_confirm').keyup(function() {
+                var val1 = $('#pass_word').val();
+                var val2 = $('#password_confirm').val();
+                if (val1 == val2) {
+                    $('#password_p').addClass('green-text');
+                    $('#password_p').text('Passwords match');
+                    $('#save_button').removeClass('disabled');
+                }
+                if (val1 != val2) {
+                    $('#password_p').addClass('red-text');
+                    $('#password_p').text('Passwords doesnot match');
+                    $('#save_button').addClass('disabled');
+                }
             });
         });
     </script>
