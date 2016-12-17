@@ -210,45 +210,6 @@
                     });
             });
         });
-        $(document).ready(function() {
-            //Confirm password
-            $('#pass_word, #password_confirm').keyup(function() {
-                var password = $('#pass_word').val();
-                var password_confirm = $('#password_confirm').val();
-                if (password_confirm == password) {
-                    $('#pass_word+label, #password_confirm+label').css({
-                        'color': 'green'
-                    });
-                    $('#pass_word.valid, #password_confirm.valid').css({
-                      'color': 'green',
-                      'border-bottom': 'green',
-                      'box-shadow': '0 1px 0 0 green'
-                    });
-                    $('#pass_word:focus.valid, #password_confirm:focus.valid').css({
-                      'color': 'green',
-                      'border-bottom': 'green',
-                      'box-shadow': '0 1px 0 0 green'
-                    });
-                    $('#save_button').removeClass('disabled');
-                }
-                if (password_confirm != password) {
-                    $('#pass_word+label, #password_confirm+label').css({
-                        'color': 'red'
-                    });
-                    $('#pass_word.valid, #password_confirm.valid').css({
-                      'color': 'red',
-                      'border-bottom': 'red',
-                      'box-shadow': '0 1px 0 0 red'
-                    });
-                    $('#pass_word:focus.valid, #password_confirm:focus.valid').css({
-                      'color': 'red',
-                      'border-bottom': 'red',
-                      'box-shadow': '0 1px 0 0 red'
-                    });
-                    $('#save_button').addClass('disabled');
-                }
-            });
-        });
     </script>
 </body>
 
