@@ -121,7 +121,6 @@
                                     <label for="password_confirm">Confirm Password</label>
                                 </div>
                             </div>
-                            <p id="password_p"></p>
                         </div>
                         <div class="card-action">
                             <button id="cancel_button" type="reset" class="waves-effect waves-teal btn-flat teal lighten-4 teal-text disabled">Cancel</button>
@@ -214,16 +213,28 @@
                 var val1 = $('#pass_word').val();
                 var val2 = $('#password_confirm').val();
                 if (val1 == val2) {
-                    $('#password_p').addClass('amber-text');
-                    $('#password_p').text('Passwords match !');
-                    $('#save_button').removeClass('disabled');
+                    $('#password_confirm+label').css({
+                        "color": "green"
+                    });
+                    $('#password_confirm:focus').css({
+                        'color': 'green',
+                        'border-bottom': 'green',
+                        'box-shadow': '0 1px 0 0 green'
+                    });
                 }
                 if (val1 != val2) {
-                    $('#password_p').addClass('amber-text');
-                    $('#password_p').text('Passwords doesnot match !');
-                    $('#save_button').addClass('disabled');
+                    $('#password_confirm+label').css({
+                        'color': 'red',
+                    });
+                    $('#password_confirm:focus').css({
+                        'color': 'red',
+                        'border-bottom': 'red',
+                        'box-shadow': '0 1px 0 0 red'
+                    });
                 }
             });
+            //Validate form
+
         });
     </script>
 </body>

@@ -43,8 +43,4 @@ $(document).ready(function() {
         $('#add_user_form').slideUp();
         $('#add_new_user').removeClass('disabled');
     });
-    //add user form change detect and update form button
-    $('#user_form').change(function() {
-        $('#cancel_button, #save_button').removeClass('disabled');
-    });
 });
