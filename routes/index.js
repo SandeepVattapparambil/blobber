@@ -110,6 +110,41 @@ router.post('/check-user_name', function(req, res, next) {
     }
 });
 ///////////////////////////////////////////////////////////////////////////////
+/* create new user*/
+router.post('/add-user', function(req, res, next) {
+    if (Object.keys(req.body).length === 0) {
+        res.json('Empty body found');
+    } else {
+        var logged_user = req.session.user_name;
+        var first_name = req.body.firstname;
+        var last_name = req.body.lastname;
+        var user_name = req.body.username;
+        var password = req.body.password_confirm;
+        var type = req.body.user_type;
+        //console.log(first_name, last_name, user_name, password, type);
+        User.create({
+            first_name: first_name,
+            last_name: last_name,
+            user_name: user_name,
+            password: password,
+            type: type
+        }, function(err, user) {
+            if (err) {
+                //Cannot create user
+                var res_session = req.session;
+                res_session.message = 'Error creating new user!';
+                res.redirect('/home/' + logged_user + '/settings');
+            }
+            if (user) {
+                //user created
+                var res_session = req.session;
+                res_session.message = 'Successfully created user : ' + first_name + " " + last_name;
+                res.redirect('/home/' + logged_user + '/settings');
+            }
+        });
+    }
+});
+///////////////////////////////////////////////////////////////////////////////
 /* Get Home */
 router.get('/home', function(req, res, next) {
     if (req.session) {
@@ -207,6 +242,7 @@ router.get('/home/:user/settings', function(req, res, next) {
     if (req.session) {
         if (req.session.user_name && req.session.user_name != null) {
             var user = req.session.user_name;
+            var message_string = req.session.message;
             User.findOne({
                 user_name: user
             }, function(err, user) {
@@ -220,7 +256,7 @@ router.get('/home/:user/settings', function(req, res, next) {
                 res.render('settings', {
                     full_name: full_name,
                     user: user_name,
-                    message: ''
+                    message: message_string
                 });
             });
         } else {
