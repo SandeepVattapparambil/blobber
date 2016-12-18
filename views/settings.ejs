@@ -234,7 +234,8 @@
             });
         });
         $(document).ready(function() {
-            $('#user_form').change(function() {
+            $('#user_form').change(function(e) {
+                e.preventDefault();
                 if ($('#first_name').val() != '' && $('#last_name').val() != '' && $('#user_name').val() != '' && $('#password_flag').val() != "0") {
                     $('#save_button').removeClass('disabled');
                     $('#cancel_button').removeClass('disabled');
