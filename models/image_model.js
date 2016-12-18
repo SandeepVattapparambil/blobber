@@ -9,7 +9,8 @@ var Schema = mongoose.Schema;
 var imageSchema = new Schema({
     image_id: String,
     image_name: String,
-    image_type: String,
+    image_data: String,
+    image_type: String
 }, {
     collection: 'blobber_image'
 });

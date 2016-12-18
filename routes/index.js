@@ -261,6 +261,14 @@ router.get('/home/:user/settings', function(req, res, next) {
     }
 });
 ///////////////////////////////////////////////////////////////////////////////
+/* Get total number of images*/
+router.get('/get-images-count', function(req, res, next) {
+    Image.find(function(err, data) {
+      count = Object.keys(data).length;
+      res.json(count);
+    });
+});
+///////////////////////////////////////////////////////////////////////////////
 /* Logout */
 router.get('/logout', function(req, res, next) {
     if (req.session) {
