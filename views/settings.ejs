@@ -119,6 +119,7 @@
                                 <div class="input-field col s12 m6">
                                     <input id="password_confirm" name="password_confirm" type="text" class="validate" required>
                                     <label for="password_confirm">Confirm Password</label>
+                                    <input type="hidden" id="password_flag" name="password_flag" value="0">
                                 </div>
                             </div>
                         </div>
@@ -169,7 +170,6 @@
             //check user_name
             $('#user_name').keyup(function() {
                 var username = $(this).val();
-                console.log(username);
                 $.post("/check-user_name", {
                         username: username
                     })
@@ -185,7 +185,6 @@
                                 'border-bottom': 'red',
                                 'box-shadow': '0 1px 0 0 red'
                             });
-                            $('#save_button').addClass('disabled');
                         }
                         if (data == 'No user found') {
                             $('#user_name+label').text('User Name available');
@@ -197,14 +196,12 @@
                                 'border-bottom': 'green',
                                 'box-shadow': '0 1px 0 0 green'
                             });
-                            $('#save_button').removeClass('disabled');
                         }
                         if (data == 'No data send') {
                             $('#user_name+label').text('User Name');
                             $('#user_name+label').css({
                                 'color': 'green'
                             });
-                            $('#save_button').addClass('disabled');
                         }
                     });
             });
@@ -221,6 +218,7 @@
                         'border-bottom': 'green',
                         'box-shadow': '0 1px 0 0 green'
                     });
+                    $('#password_flag').val('1');
                 }
                 if (val1 != val2) {
                     $('#password_confirm+label').css({
@@ -231,10 +229,17 @@
                         'border-bottom': 'red',
                         'box-shadow': '0 1px 0 0 red'
                     });
+                    $('#password_flag').val('0');
                 }
             });
-            //Validate form
-
+        });
+        $(document).ready(function() {
+            $('#user_form').change(function() {
+                if ($('#first_name').val() != '' && $('#last_name').val() != '' && $('#user_name').val() != '' && $('#password_flag').val() != "0") {
+                    $('#save_button').removeClass('disabled');
+                    $('#cancel_button').removeClass('disabled');
+                }
+            });
         });
     </script>
 </body>
