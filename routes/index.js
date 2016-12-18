@@ -9,7 +9,6 @@ var mongoose = require('mongoose');
 
 //Instantiate User Schema
 var User = require('../models/user_model.js');
-
 //Instantiate Image model
 var Image = require('../models/image_model.js');
 
