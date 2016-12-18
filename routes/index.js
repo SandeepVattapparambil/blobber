@@ -21,6 +21,10 @@ var userSchema = new Schema({
 });
 //Instantiate User Schema
 var User = mongoose.model('User', userSchema);
+
+//Instantiate Image model
+var Image = require('../models/image_model.js');
+
 ///////////////////////////////////////////////////////////////////////////////
 //Check MongoDB service is running or not
 var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connect) {
