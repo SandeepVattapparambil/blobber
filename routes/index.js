@@ -6,21 +6,9 @@ var express = require('express');
 var router = express.Router();
 /*Mongoose driver for MongoDB*/
 var mongoose = require('mongoose');
-//Instantiate Mongoose Schema
-var Schema = mongoose.Schema;
-//Define User Schema
-//This Schema applies a default Mongoose versioning  '_v:version_no'
-var userSchema = new Schema({
-    first_name: String,
-    last_name: String,
-    user_name: String,
-    password: String,
-    type: String
-}, {
-    collection: 'blobber_user'
-});
+
 //Instantiate User Schema
-var User = mongoose.model('User', userSchema);
+var User = require('../models/user_model.js');
 
 //Instantiate Image model
 var Image = require('../models/image_model.js');
@@ -219,6 +207,7 @@ router.post('/update_profile', function(req, res, next) {
                 var message = 'Cannot find user!';
                 res.redirect('/');
             }
+            var type = user.type;
             User.update({
                 first_name: first_name,
                 last_name: last_name,
@@ -234,7 +223,8 @@ router.post('/update_profile', function(req, res, next) {
                     first_name: first_name,
                     last_name: last_name,
                     user_name: user_name,
-                    password: password
+                    password: password,
+                    type: type
                 });
             });
 
