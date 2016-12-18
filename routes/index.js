@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 //Instantiate Mongoose Schema
 var Schema = mongoose.Schema;
 //Define User Schema
+//This Schema applies a default Mongoose versioning  '_v:version_no'
 var userSchema = new Schema({
     first_name: String,
     last_name: String,
