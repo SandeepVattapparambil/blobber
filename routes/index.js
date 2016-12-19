@@ -12,6 +12,11 @@ var User = require('../models/user_model.js');
 //Instantiate Image model
 var Image = require('../models/image_model.js');
 
+//Include FileSystem and File I/O Module
+var fs = fs = require('fs');
+//Include Folder and Directory structure Module
+var path = require('path');
+
 ///////////////////////////////////////////////////////////////////////////////
 //Check MongoDB service is running or not
 var db = mongoose.connect('mongodb://localhost/blobber', function(err, db_connect) {
@@ -297,7 +302,14 @@ router.get('/home/:user/:image_name.:image_type', function(req, res, next) {
             if (data == null || data == 0) {
                 res.json('Cannot find data');
             } else {
-                res.send("<img src=\"data:image/" + image_type + ";base64, " + data.image_data + "\"/>");
+                var file_name = image_name + '.' + image_type;
+                var image_buffer = new Buffer(data.image_data, 'base64');
+                fs.writeFile('./image_temp/' + file_name + '', image_buffer, function(err, data) {
+                    if (err) {
+                        res.json('Cannot create image');
+                    }
+                    res.sendFile(path.resolve('./image_temp/' + file_name));
+                });
             }
         });
     } else {
