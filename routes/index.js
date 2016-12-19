@@ -286,16 +286,21 @@ router.get('/home/:user/get-images-count', function(req, res, next) {
 /* Get an image*/
 router.get('/home/:user/:image_name.:image_type', function(req, res, next) {
     if (req.session.user_name) {
-        var user = req.params.user;
         var image_name = req.params.image_name;
         var image_type = req.params.image_type;
-        /*  Image.find(function(err, data) {
-              var count = Object.keys(data).length;
-              //var img = data[0].image_data;
-              //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
-              res.json("" + count);
-          });*/
-        res.json(image_data);
+        Image.findOne({
+            image_name: image_name,
+            image_type: "image/"+image_type
+        }, function(err, data) {
+            if (err) {
+                res.json('Cannot find data');
+            }
+            if (data == null || data == 0) {
+                res.json('Cannot find data');
+            } else {
+                res.send(data.image_data);
+            }
+        });
     } else {
         res.setHeader(
             'Content-Type',

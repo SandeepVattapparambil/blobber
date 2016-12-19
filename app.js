@@ -25,7 +25,8 @@ var api = require('./routes/api');
 
 /*Instantiate Express Module*/
 var app = express();
-
+//Pretty print view data
+app.locals.pretty = true;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //EJS view engine is used
