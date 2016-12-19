@@ -266,7 +266,6 @@ router.get('/home/:user/get-images-count', function(req, res, next) {
     if (req.session.user_name) {
         Image.find(function(err, data) {
             var count = Object.keys(data).length;
-            //var img = data[0].image_data;
             //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
             res.json("" + count);
         });
@@ -290,7 +289,7 @@ router.get('/home/:user/:image_name.:image_type', function(req, res, next) {
         var image_type = req.params.image_type;
         Image.findOne({
             image_name: image_name,
-            image_type: "image/"+image_type
+            image_type: "image/" + image_type
         }, function(err, data) {
             if (err) {
                 res.json('Cannot find data');
@@ -298,7 +297,7 @@ router.get('/home/:user/:image_name.:image_type', function(req, res, next) {
             if (data == null || data == 0) {
                 res.json('Cannot find data');
             } else {
-                res.send(data.image_data);
+                res.send("<img src=\"data:image/" + image_type + ";base64, " + data.image_data + "\"/>");
             }
         });
     } else {
