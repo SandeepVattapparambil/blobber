@@ -262,12 +262,51 @@ router.get('/home/:user/settings', function(req, res, next) {
 });
 ///////////////////////////////////////////////////////////////////////////////
 /* Get total number of images*/
-router.get('/get-images-count', function(req, res, next) {
-    Image.find(function(err, data) {
-        var count = Object.keys(data).length;
-        //var img = data[0].image_data;
-        //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
-    });
+router.get('/home/:user/get-images-count', function(req, res, next) {
+    if (req.session.user_name) {
+        Image.find(function(err, data) {
+            var count = Object.keys(data).length;
+            //var img = data[0].image_data;
+            //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
+            res.json("" + count);
+        });
+    } else {
+        res.setHeader(
+            'Content-Type',
+            'application/json',
+            'charset=utf-8'
+        );
+        res.send(200, JSON.stringify({
+            "message": "Requires Authentication",
+            "documentation_url": "https://developer.blobber.com/v1"
+        }));
+    }
+});
+///////////////////////////////////////////////////////////////////////////////
+/* Get an image*/
+router.get('/home/:user/:image_name.:image_type', function(req, res, next) {
+    if (req.session.user_name) {
+        var user = req.params.user;
+        var image_name = req.params.image_name;
+        var image_type = req.params.image_type;
+        /*  Image.find(function(err, data) {
+              var count = Object.keys(data).length;
+              //var img = data[0].image_data;
+              //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
+              res.json("" + count);
+          });*/
+        res.json(image_data);
+    } else {
+        res.setHeader(
+            'Content-Type',
+            'application/json',
+            'charset=utf-8'
+        );
+        res.send(200, JSON.stringify({
+            "message": "Requires Authentication",
+            "documentation_url": "https://developer.blobber.com/v1"
+        }));
+    }
 });
 ///////////////////////////////////////////////////////////////////////////////
 /* Logout */
