@@ -53,6 +53,22 @@
 
     <div class="container">
         <!-- Page Content goes here -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <span class="card-title">Summary • <%=user%></span>
+                    </div>
+                    <div class="rule"></div>
+                    <div class="card-content grey-text">
+                        <h3 id="img-count"></h3>
+                        <p>
+                            Images in bucket.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <!--Import jQuery before materialize.js-->
@@ -69,6 +85,12 @@
         if (message) {
             Materialize.toast(message, 4000);
         }
+        $(document).ready(function() {
+            $.getJSON('/home/<%=user%>/get-images-count', function(data) {
+                $('#img-count').html(data);
+                event.preventDefault();
+            });
+        });
     </script>
 </body>
 

@@ -271,7 +271,6 @@ router.get('/home/:user/get-images-count', function(req, res, next) {
     if (req.session.user_name) {
         Image.find(function(err, data) {
             var count = Object.keys(data).length;
-            //res.send("<img src=\"data:image/gif;base64, " + img + "\"/>");
             res.json("" + count);
         });
     } else {
